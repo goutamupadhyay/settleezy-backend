@@ -11,16 +11,7 @@ const PORT = process.env.PORT || 5000
 connectDB()
 
 // ── Middleware ────────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173,http://localhost:3000')
-  .split(',')
-  .map((origin) => origin.trim())
-  .filter(Boolean)
-
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ['GET', 'POST'],
-  credentials: true,
-}))
+app.use(cors())
 
 app.use(express.json({ limit: '5mb' }))         // parse JSON body
 app.use(express.urlencoded({ extended: true }))  // parse URL-encoded body
